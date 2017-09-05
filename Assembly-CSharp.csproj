@@ -51,8 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GDF3_ImanSyed\_Scripts\CameraScript.cs" />
-     <Compile Include="Assets\GDF3_ImanSyed\_Scripts\MovementScript.cs" />
+     <Compile Include="Assets\GDF3_ImanSyed\_Scripts\_Camera\CameraScript.cs" />
+     <Compile Include="Assets\GDF3_ImanSyed\_Scripts\_Camera\MovementScript.cs" />
+     <Compile Include="Assets\GDF3_ImanSyed\_Scripts\_General\PlatformScript.cs" />
      <None Include="Assets\GDF3_ImanSyed\DoNotDelete.txt" />
      <None Include="Assets\GDF3_ImanSyed\_Scripts\DoNotDelete.txt" />
      <None Include="Assets\GDF3_ImanSyed\_Art\_Meshes\_Characters\DoNotDelete.txt" />
