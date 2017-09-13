@@ -12,6 +12,12 @@ public class TriggerScript : MonoBehaviour {
 
 
 
+
+	private void Start(){
+		
+	}
+
+
 	void OnTriggerEnter(Collider col){
 		
 		if (col.gameObject.tag == "Player") {

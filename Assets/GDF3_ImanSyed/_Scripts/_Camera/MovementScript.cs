@@ -21,10 +21,8 @@ public class MovementScript : MonoBehaviour {
 			flag = true;
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			Debug.Log ("Space");
+		if (Input.GetKeyDown (KeyCode.F)) {
 			if (flag) {
-				Debug.Log ("Free");
 				restriction++;
 				flag = false;
 				t = 0;
@@ -34,6 +32,7 @@ public class MovementScript : MonoBehaviour {
 					platform.transform.position = v;
 					platform.SetActive (true);
 					gameObject.GetComponent<Rigidbody> ().useGravity = true;
+					gameObject.GetComponent<Rigidbody> ().isKinematic = true;
 				}
 				if (restriction == 2) {
 					platform.transform.position = v;
