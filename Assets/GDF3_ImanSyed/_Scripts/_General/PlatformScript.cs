@@ -76,7 +76,7 @@ public class PlatformScript : MonoBehaviour {
 		}
 		if(gm.rNum >= 3){
 			float xpos = Random.Range (-0.45f, 0.45f);
-			float ypos = Random.Range (0.75f, 1.5f);
+			float ypos = Random.Range (0.5f, 1.5f);
 
 		pos = new Vector3(xpos, ypos, 0);
 		GameObject gay = Instantiate (obs,Vector3.zero, Quaternion.identity, gameObject.transform);
