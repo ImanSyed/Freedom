@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SensorScript : MonoBehaviour {
 
+	GameObject pc;
+
+	void Start(){
+		pc = GameObject.FindGameObjectWithTag ("Player");
+	}
 
 	void LateUpdate(){
 		/*
@@ -21,7 +26,9 @@ public class SensorScript : MonoBehaviour {
 
 	void OnTriggerExit(Collider col){
 		if (col.gameObject.tag == "Finish") {
-			col.gameObject.SendMessage ("DeactivateMe");
+			if (pc.GetComponent<CharacterController> ().isGrounded) {
+				col.gameObject.SendMessage ("DeactivateMe");	
+			}
 		}
 	}
 }
