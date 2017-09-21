@@ -39,7 +39,6 @@ public class MovementScript : MonoBehaviour {
 				moveDirection *= speed;
 				if (Input.GetButtonDown ("Jump")) {
 					moveDirection.y = jumpForce;
-					Debug.Log ("Jump");
 				}
 			}
 			controller.Move (moveDirection * Time.deltaTime);

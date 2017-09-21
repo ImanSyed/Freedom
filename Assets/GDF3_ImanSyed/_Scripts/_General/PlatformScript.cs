@@ -15,6 +15,7 @@ public class PlatformScript : MonoBehaviour {
 	bool rChild, lChild, fChild, bChild = false;
 	string posName = "";
 
+	bool willFall;
 
 	void Start(){
 		gm = FindObjectOfType<RestrictionScript> ();
@@ -36,6 +37,13 @@ public class PlatformScript : MonoBehaviour {
 	}
 
 	void Update(){
+		if (gm.rNum >= 5) {
+			float r = Random.Range (0, 5);
+			if(r <= 1 && isActive && !willFall){
+				willFall = true;
+				StartCoroutine(FallDown (3));
+			}
+		}
 		if (isActive) {
 			if (player.position.x - transform.position.x >= 3.5f && !rChild && posName != "left") {
 				rChild = true;
@@ -56,6 +64,7 @@ public class PlatformScript : MonoBehaviour {
 	}
 
 	private void Initialize(PlatformScript parent, Vector3 pos, string n){
+		willFall = true;
 		gm = FindObjectOfType<RestrictionScript> ();
 		obs = GameObject.FindGameObjectWithTag ("Respawn");
 		mesh = parent.mesh;
@@ -65,6 +74,16 @@ public class PlatformScript : MonoBehaviour {
 		transform.localPosition = pos;
 		posName = n;
 		int x = 0;
+		if (gm.rNum >= 4) {
+			float distance = Random.Range (0.04f, 0.175f);
+			if (transform.position.x > 0) {
+				pos.x += distance;
+			}else{
+				pos.x -= distance;
+			}
+			transform.localPosition = pos;
+		}
+
 		PlatformScript[] ps = FindObjectsOfType<PlatformScript> ();
 		foreach (PlatformScript p in ps) {
 			if (parent.transform.position == p.transform.position) {
@@ -75,16 +94,19 @@ public class PlatformScript : MonoBehaviour {
 			}
 		}
 		if(gm.rNum >= 3){
-			float xpos = Random.Range (-0.45f, 0.45f);
-			float ypos = Random.Range (0.5f, 1.5f);
+			float xpos = Random.Range (-0.425f, 0.425f);
+			float ypos = Random.Range (0.3f, 1.5f);
+			pos = new Vector3(xpos, ypos, 0);
+			GameObject ob = Instantiate (obs,Vector3.zero, Quaternion.identity, gameObject.transform);
+			ob.transform.localPosition = pos;
+		}
+	}
 
-		pos = new Vector3(xpos, ypos, 0);
-		GameObject gay = Instantiate (obs,Vector3.zero, Quaternion.identity, gameObject.transform);
-		gay.transform.localPosition = pos;
-		MakeObstacle ();
+	IEnumerator FallDown(float delay){
+		yield return new WaitForSeconds (delay);
+		transform.DetachChildren ();
+		Destroy (gameObject);
+		willFall = false;
 	}
-	}
-	void MakeObstacle(){
-		
-	}
+
 }
