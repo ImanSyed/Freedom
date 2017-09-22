@@ -52,22 +52,30 @@ public class RestrictionScript : MonoBehaviour {
 
 
 	public void SpawnStuff(int i, Vector3 pos){
-		pos.x += Random.Range (-4, 4);
-		pos.z += Random.Range (-2.25f, 2.25f);
-		pos.y += 0.5f;
-		float size = Random.Range (0.5f, 2);
+		Vector3 newPos = pos;
+		if (rNum < 2) {
+			newPos.x += Random.Range (-4, 4);
+			newPos.z += Random.Range (-4f, 4f);
+		} else {
+			newPos.x += Random.Range (-8, 8);
+			newPos.z += Random.Range (-1.35f, 1.35f);
+		}
+		newPos.y += 0.5f;
+		float size = Random.Range (0.35f, 2.5f);
 		GameObject o;
 		if (i == 1) {
-			o = Instantiate (tree, pos, Quaternion.Euler(-90, 0, 0));
+			o = Instantiate (tree, newPos, Quaternion.Euler(-90, Random.Range(0, 180), 0));
 			o.transform.localScale = new Vector3 (size, size, size);
 		} else if (i == 2) {
-			o = Instantiate (rock1, pos, Quaternion.identity);
+			o = Instantiate (rock1, newPos, Quaternion.Euler(0, Random.Range(0, 180), 0));
 			o.transform.localScale = new Vector3 (size, size, size);
 		} else {
-			o = Instantiate (rock2, pos, Quaternion.identity);
+			o = Instantiate (rock2, newPos, Quaternion.Euler(0, Random.Range(0, 180), 0));
 			o.transform.localScale = new Vector3 (size, size, size);
 		}
-		Debug.Log ("Spawned");
+		if(Random.Range (0, 100) >= 85){
+			SpawnStuff (i, pos); 	//Repeat function
+		}
 	}
 
 
