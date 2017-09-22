@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6fe809ae2acd1be4cb76a3fc6732f760
-timeCreated: 1506086907
+timeCreated: 1506090426
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -21,8 +21,8 @@ ModelImporter:
     13700000: ENV_FL_Grass_01
   materials:
     importMaterials: 1
-    materialName: 0
-    materialSearch: 1
+    materialName: 1
+    materialSearch: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
