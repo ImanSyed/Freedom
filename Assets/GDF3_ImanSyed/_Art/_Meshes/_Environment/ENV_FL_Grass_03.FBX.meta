@@ -21,7 +21,7 @@ ModelImporter:
     13700000: ENV_FL_Grass_03
   materials:
     importMaterials: 1
-    materialName: 1
+    materialName: 0
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
