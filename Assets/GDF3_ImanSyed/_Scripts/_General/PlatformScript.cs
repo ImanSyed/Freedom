@@ -9,6 +9,7 @@ public class PlatformScript : MonoBehaviour {
 	public Transform player;
 	public GameObject obs;
 
+
 	RestrictionScript gm;
 
 	public bool isActive;
@@ -37,13 +38,13 @@ public class PlatformScript : MonoBehaviour {
 	}
 
 	void Update(){
-		if (gm.rNum >= 5) {
+		/*if (gm.rNum >= 5) {
 			float r = Random.Range (0, 5);
-			if(r <= 1 && isActive && !willFall){
+			if(r <= 1 && isActive && !willFall){     	//Destroy after delay
 				willFall = true;
 				StartCoroutine(FallDown (3));
 			}
-		}
+		}*/
 		if (isActive) {
 			if (player.position.x - transform.position.x >= 3.5f && !rChild && posName != "left") {
 				rChild = true;
@@ -65,6 +66,7 @@ public class PlatformScript : MonoBehaviour {
 
 	private void Initialize(PlatformScript parent, Vector3 pos, string n){
 		willFall = true;
+
 		gm = FindObjectOfType<RestrictionScript> ();
 		obs = GameObject.FindGameObjectWithTag ("Respawn");
 		mesh = parent.mesh;
@@ -73,33 +75,51 @@ public class PlatformScript : MonoBehaviour {
 		transform.localScale = Vector3.one;
 		transform.localPosition = pos;
 		posName = n;
-		int x = 0;
-		if (gm.rNum >= 4) {
-			float distance = Random.Range (0.04f, 0.175f);
-			if (transform.position.x > 0) {
-				pos.x += distance;
-			}else{
-				pos.x -= distance;
-			}
-			transform.localPosition = pos;
-		}
 
+		int x = 0;
 		PlatformScript[] ps = FindObjectsOfType<PlatformScript> ();
 		foreach (PlatformScript p in ps) {
 			if (parent.transform.position == p.transform.position) {
 				x++;
 				if (x == 2) {
-					Destroy (gameObject);
+					Destroy (gameObject);              //Destroy duplicates
 				}
 			}
 		}
+
+		float r1 = Random.Range (0, 10);
+		float r2 = Random.Range (0, 10);
+		float r3 = Random.Range (0, 10);
+		if (r1 <= 3) {
+			gm.SpawnStuff (1, transform.position);
+		}
+		if (r2 <= 3) {
+			gm.SpawnStuff (2, transform.position);
+		}
+		if (r3 <= 3) {
+			gm.SpawnStuff (3, transform.position);
+		}
+
+		if (gm.rNum >= 4) {
+			float distance = Random.Range (0.05f, 0.165f);
+			if (transform.position.x > 0) {
+				pos.x += distance;
+			}else{
+				pos.x -= distance;
+			}
+			transform.localPosition = pos; //Platform distance
+		}
+
 		if(gm.rNum >= 3){
 			float xpos = Random.Range (-0.425f, 0.425f);
 			float ypos = Random.Range (0.3f, 1.5f);
 			pos = new Vector3(xpos, ypos, 0);
-			GameObject ob = Instantiate (obs,Vector3.zero, Quaternion.identity, gameObject.transform);
+			GameObject ob = Instantiate (obs,Vector3.zero, Quaternion.identity, gameObject.transform);  //Spawn obstacle
 			ob.transform.localPosition = pos;
 		}
+
+
+
 	}
 
 	IEnumerator FallDown(float delay){

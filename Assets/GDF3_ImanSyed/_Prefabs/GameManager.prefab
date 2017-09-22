@@ -54,5 +54,9 @@ MonoBehaviour:
   rNum: 0
   platform: {fileID: 0}
   pc: {fileID: 0}
-  obs: {fileID: 1067151924637346, guid: a3c80727d85777943b403a4720e5c05a, type: 2}
+  cloud: {fileID: 0}
+  enemy: {fileID: 1885630824136628, guid: 16c4719ba29e39a4ebac322024969325, type: 2}
+  tree: {fileID: 100000, guid: d655ccb961a23544690c98f57c6784ba, type: 3}
+  rock1: {fileID: 100000, guid: 070e1e17d1ee375418b7d7c4bad2a1e5, type: 3}
+  rock2: {fileID: 100000, guid: 5e02643ab56d1854faa38ee9c20ab125, type: 3}
   rNumDuration: 2

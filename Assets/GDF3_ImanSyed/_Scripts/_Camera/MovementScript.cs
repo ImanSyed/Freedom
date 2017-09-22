@@ -13,16 +13,11 @@ public class MovementScript : MonoBehaviour {
 
 	public float jumpForce;
 
-	Rigidbody rb;
-
 	CharacterController controller;
-
-
 		
 	void Start(){
 		controller = GetComponent<CharacterController> ();
 		gm = GameObject.FindGameObjectWithTag ("GameController");
-		rb = GetComponent<Rigidbody>();
 	}
 
 	void Update () {
