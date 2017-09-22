@@ -82,24 +82,11 @@ public class PlatformScript : MonoBehaviour {
 			if (transform.position == p.transform.position) {
 				x++;
 				if (x == 2) {
-					Destroy (gameObject);
-					Debug.Log ("!");  	//Destroy duplicates
+					Destroy (gameObject);      //Destroy duplicates
 				}
 			}
 		}
 
-		float r1 = Random.Range (0, 10);
-		float r2 = Random.Range (0, 10);
-		float r3 = Random.Range (0, 10);
-		if (r1 <= 3) {
-			gm.SpawnStuff (1, transform.position);
-		}
-		if (r2 <= 5) {
-			gm.SpawnStuff (2, transform.position);
-		}
-		if (r3 <= 3) {
-			gm.SpawnStuff (3, transform.position);   //Spawn stuff
-		}
 
 
 		if (gm.rNum >= 4) {
@@ -120,8 +107,21 @@ public class PlatformScript : MonoBehaviour {
 			ob.transform.localPosition = pos;
 		}
 
+		if (x < 2) {
+			float r1 = Random.Range (0, 10);
+			float r2 = Random.Range (0, 10);
+			float r3 = Random.Range (0, 10);
+			if (r1 <= 4) {
+				gm.SpawnStuff (1, transform.position);
+			}
+			if (r2 <= 6) {
+				gm.SpawnStuff (2, transform.position);
+			}
+			if (r3 <= 4) {
+				gm.SpawnStuff (3, transform.position);   //Spawn stuff
+			}
 
-
+		}
 	}
 
 	IEnumerator FallDown(float delay){

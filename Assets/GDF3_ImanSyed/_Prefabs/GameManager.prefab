@@ -56,7 +56,7 @@ MonoBehaviour:
   pc: {fileID: 0}
   cloud: {fileID: 0}
   enemy: {fileID: 1885630824136628, guid: 16c4719ba29e39a4ebac322024969325, type: 2}
-  tree: {fileID: 100000, guid: d655ccb961a23544690c98f57c6784ba, type: 3}
-  rock1: {fileID: 100000, guid: 070e1e17d1ee375418b7d7c4bad2a1e5, type: 3}
-  rock2: {fileID: 100000, guid: 5e02643ab56d1854faa38ee9c20ab125, type: 3}
+  tree: {fileID: 1736119699087874, guid: a86948bab156a8e4d98f90e08fce1568, type: 2}
+  rock1: {fileID: 1577463952102044, guid: 2759e0741fb2ee44f949d9e78695a712, type: 2}
+  rock2: {fileID: 1836709424459690, guid: 444a94744082e824aa4551996709978d, type: 2}
   rNumDuration: 2

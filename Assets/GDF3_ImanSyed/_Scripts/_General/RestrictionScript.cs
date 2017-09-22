@@ -61,7 +61,7 @@ public class RestrictionScript : MonoBehaviour {
 			newPos.z += Random.Range (-1.35f, 1.35f);
 		}
 		newPos.y += 0.5f;
-		float size = Random.Range (0.35f, 2.5f);
+		float size = Random.Range (0.45f, 2.5f);
 		GameObject o;
 		if (i == 1) {
 			o = Instantiate (tree, newPos, Quaternion.Euler(-90, Random.Range(0, 180), 0));
@@ -73,7 +73,7 @@ public class RestrictionScript : MonoBehaviour {
 			o = Instantiate (rock2, newPos, Quaternion.Euler(0, Random.Range(0, 180), 0));
 			o.transform.localScale = new Vector3 (size, size, size);
 		}
-		if(Random.Range (0, 100) >= 85){
+		if(Random.Range (0, 100) >= 80){
 			SpawnStuff (i, pos); 	//Repeat function
 		}
 	}
