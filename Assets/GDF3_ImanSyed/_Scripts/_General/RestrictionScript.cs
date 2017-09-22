@@ -78,7 +78,7 @@ public class RestrictionScript : MonoBehaviour {
 			o = Instantiate (rock2, newPos, Quaternion.Euler(0, Random.Range(0, 180), 0));
 			o.transform.localScale = new Vector3 (size, size, size);
 		}
-		if (Random.Range (0, 1f) < 0.2f) {
+		if (Random.Range (0, 1f) < 0.15f) {
 			Color c = new Color (Random.Range (0, 1f), Random.Range (0, 1f), Random.Range (0, 1f), Random.Range (0, 1f));
 			o.GetComponent<MeshRenderer> ().material.color = c;
 		}
