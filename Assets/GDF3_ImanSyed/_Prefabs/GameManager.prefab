@@ -59,4 +59,5 @@ MonoBehaviour:
   tree: {fileID: 1736119699087874, guid: a86948bab156a8e4d98f90e08fce1568, type: 2}
   rock1: {fileID: 1577463952102044, guid: 2759e0741fb2ee44f949d9e78695a712, type: 2}
   rock2: {fileID: 1836709424459690, guid: 444a94744082e824aa4551996709978d, type: 2}
+  rareAlt: {fileID: 0}
   rNumDuration: 2

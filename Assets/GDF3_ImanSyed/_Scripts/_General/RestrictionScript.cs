@@ -8,6 +8,7 @@ public class RestrictionScript : MonoBehaviour {
 	public int rNum = 0;
 	public GameObject platform, pc, cloud, enemy;
 	public GameObject tree, rock1, rock2;
+	public Material rareAlt;
 
 	public int rNumDuration = 2;
 
@@ -28,6 +29,10 @@ public class RestrictionScript : MonoBehaviour {
 				platform.SetActive (true);			//Setting platform under player
 			}
 			if (rNum == 2) {
+				GameObject[] env = GameObject.FindGameObjectsWithTag ("Environment");
+				foreach (GameObject ob in env) {
+					Destroy (ob);
+				}
 				v.y -= 1f;
 				platform.transform.position = v;
 				v = Vector3.one;
@@ -73,7 +78,11 @@ public class RestrictionScript : MonoBehaviour {
 			o = Instantiate (rock2, newPos, Quaternion.Euler(0, Random.Range(0, 180), 0));
 			o.transform.localScale = new Vector3 (size, size, size);
 		}
-		if(Random.Range (0, 100) >= 80){
+		if (Random.Range (0, 1f) < 0.2f) {
+			Color c = new Color (Random.Range (0, 1f), Random.Range (0, 1f), Random.Range (0, 1f), Random.Range (0, 1f));
+			o.GetComponent<MeshRenderer> ().material.color = c;
+		}
+		if(Random.Range (0, 100) >= 75){
 			SpawnStuff (i, pos); 	//Repeat function
 		}
 	}
@@ -103,7 +112,14 @@ public class RestrictionScript : MonoBehaviour {
 		} else {
 			pos.x -= Random.Range (7, 15);
 		}
-		Instantiate (enemy, pos, Quaternion.identity);
+		GameObject e = Instantiate (enemy, pos, Quaternion.identity);
 		spawnEnemy = false;
+		float colourChance = Random.Range (0, 1f);
+		if(colourChance >= 0.5f){
+			MeshRenderer[] me = e.GetComponentsInChildren<MeshRenderer> ();
+			foreach (MeshRenderer m in me) {
+				m.material.color = new Color (1, 0.4f, 0.7f, 1);
+			}
+	}
 	}
 }
