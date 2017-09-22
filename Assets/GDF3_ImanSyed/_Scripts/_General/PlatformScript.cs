@@ -79,10 +79,11 @@ public class PlatformScript : MonoBehaviour {
 		int x = 0;
 		PlatformScript[] ps = FindObjectsOfType<PlatformScript> ();
 		foreach (PlatformScript p in ps) {
-			if (parent.transform.position == p.transform.position) {
+			if (transform.position == p.transform.position) {
 				x++;
 				if (x == 2) {
-					Destroy (gameObject);              //Destroy duplicates
+					Destroy (gameObject);
+					Debug.Log ("!");  	//Destroy duplicates
 				}
 			}
 		}
@@ -93,12 +94,13 @@ public class PlatformScript : MonoBehaviour {
 		if (r1 <= 3) {
 			gm.SpawnStuff (1, transform.position);
 		}
-		if (r2 <= 3) {
+		if (r2 <= 5) {
 			gm.SpawnStuff (2, transform.position);
 		}
 		if (r3 <= 3) {
-			gm.SpawnStuff (3, transform.position);
+			gm.SpawnStuff (3, transform.position);   //Spawn stuff
 		}
+
 
 		if (gm.rNum >= 4) {
 			float distance = Random.Range (0.05f, 0.165f);
