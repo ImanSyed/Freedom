@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/GDF3_ImanSyed/_Scenes/_Other/1.unity
+    guid: dd6e781d6be7d4f428b05abff51908f0

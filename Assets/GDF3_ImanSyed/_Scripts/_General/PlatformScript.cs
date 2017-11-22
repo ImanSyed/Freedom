@@ -15,8 +15,10 @@ public class PlatformScript : MonoBehaviour {
 	public bool isActive;
 	bool rChild, lChild, fChild, bChild = false;
 	string posName = "";
-
-	bool willFall;
+	float startTime;
+	bool willFall, isMoving;
+	public float moveSpeed = 0.25f;
+	Vector3 startPos, endPos;
 
 	void Start(){
 		gm = FindObjectOfType<RestrictionScript> ();
@@ -61,6 +63,15 @@ public class PlatformScript : MonoBehaviour {
 				new GameObject ("Child Platform").AddComponent<PlatformScript> ().Initialize (this, Vector3.forward, "forward");
 			}
 		} 
+	/*	if (isMoving) {
+			if (transform.position != endPos) {
+				float distCovered = (Time.time - startTime) * moveSpeed;
+				float fracJourney = distCovered / 2;
+				transform.position = Vector3.Lerp (startPos, endPos, fracJourney);
+			} else {
+				isMoving = false;
+			}
+		}*/
 
 	}
 
@@ -73,6 +84,11 @@ public class PlatformScript : MonoBehaviour {
 		material = parent.material;
 		transform.parent = parent.transform;
 		transform.localScale = Vector3.one;
+		endPos = pos;
+		//pos.y = -2f;
+		startPos = pos;
+		startTime = Time.deltaTime;
+		isMoving = true;
 		transform.localPosition = pos;
 		posName = n;
 
